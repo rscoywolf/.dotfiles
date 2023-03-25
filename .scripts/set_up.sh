@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# store current directory to variable
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 # install the packages
 sudo pacman -S i3
 sudo pacman -S neovim
@@ -15,6 +18,13 @@ sudo pacman -S texlive-most
 # nvidia drivers
 sudo mhwd -a pci nonfree 0300
 
+# geforce now
+cd ~
+sudo pacman -S git base-devel
+git clone https://aur.archlinux.org/geforcenow-electron.git
+cd geforcenow-electron
+makepkg -si
+
 # install snap
 cd ~/Downloads
 git clone https://aur.archlinux.org/snapd.git
@@ -25,6 +35,9 @@ sudo ln -s /var/lib/snapd/snap /snap
 
 # install snap apps
 sudo snap install --classic code
+
+# back to scripts directory
+cd $DIR
 
 # run the script called link_configs.sh
 chmod +x link_configs.sh
@@ -40,5 +53,5 @@ git config --global user.email "rscoywolf@gmail.com"
 git config --global user.name "rscoywolf"
 git config credential.helper store
 
-cd
+cd ~
 git clone https://github.com/rscoywolf/schoolwork.git
