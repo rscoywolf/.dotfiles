@@ -415,8 +415,11 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+# set default browser to firefox
 exec "unset BROWSER"
 exec "export BROWSER=/usr/bin/firefox"
 
 exec "redshift"
 exec "backgrounds.sh"
+# run the script sleep.sh on the shortcut super+alt+l
+bindsym $mod+alt+l exec --no-startup-id sleep.sh
