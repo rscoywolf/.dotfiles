@@ -1,0 +1,5 @@
+require 'alex.lang.lsp'
+require 'alex.lang.debugger'
+require 'alex.lang.treesitter'
+require 'alex.lang.tools'
+require 'alex.lang.completion'

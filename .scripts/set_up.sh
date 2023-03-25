@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install the packages
-sudo pacman -S i3 nvim feh fish redshift firefox signal-desktop discord
+sudo pacman -S i3 nvim feh fish redshift firefox signal-desktop discord neofetch fzf
 
 # run the script called link_configs.sh
 chmod +x link_configs.sh
