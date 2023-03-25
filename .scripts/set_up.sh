@@ -14,6 +14,7 @@ sudo pacman -S signal-desktop
 sudo pacman -S discord
 sudo pacman -S neofetch
 sudo pacman -S fzf
+# all the latex stuff i need to compile locally
 sudo pacman -S texlive-most
 
 # nvidia drivers
