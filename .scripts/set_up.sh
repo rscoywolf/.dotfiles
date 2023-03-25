@@ -18,7 +18,7 @@ sudo pacman -S texlive-most
 # nvidia drivers
 sudo mhwd -a pci nonfree 0300
 
-# geforce now
+# geforce now (electron)
 cd ~
 sudo pacman -S git base-devel
 git clone https://aur.archlinux.org/geforcenow-electron.git
