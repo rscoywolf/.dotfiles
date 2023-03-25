@@ -412,7 +412,8 @@ mode "$mode_gaps_outer" {
         bindsym Shift+plus  gaps outer all plus 5
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
-
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+redshift
