@@ -15,6 +15,7 @@ sudo pacman -S discord
 sudo pacman -S neofetch
 sudo pacman -S fzf
 sudo pacman -S texlive-most
+
 # nvidia drivers
 sudo mhwd -a pci nonfree 0300
 
@@ -35,6 +36,7 @@ sudo ln -s /var/lib/snapd/snap /snap
 
 # install snap apps
 sudo snap install --classic code
+sudo snap install teams-for-linux
 
 # back to scripts directory
 cd $DIR
