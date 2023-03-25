@@ -11,6 +11,8 @@ sudo pacman -S signal-desktop
 sudo pacman -S discord
 sudo pacman -S neofetch
 sudo pacman -S fzf
+# nvidia drivers
+sudo mhwd -a pci nonfree 0300
 
 # install snap
 cd ~/Downloads
