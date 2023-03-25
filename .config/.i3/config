@@ -415,7 +415,8 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-unset BROWSER
-export BROWSER=/usr/bin/firefox
+exec "unset BROWSER"
+exec "export BROWSER=/usr/bin/firefox"
 
-redshift
+exec "redshift"
+exec "backgrounds.sh"
