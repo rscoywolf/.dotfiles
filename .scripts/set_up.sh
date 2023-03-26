@@ -50,16 +50,24 @@ if [[ "$choice_geforce_now" =~ ^[Yy]$ ]]; then
 fi
 
 # install snap
-cd ~/Downloads
-git clone https://aur.archlinux.org/snapd.git
-cd snapd
-makepkg -si
-sudo systemctl enable --now snapd.socket
-sudo ln -s /var/lib/snapd/snap /snap
+read -p "Install snap? (y/n): " choice_snap
 
-# install snap apps
-sudo snap install --classic code
-sudo snap install teams-for-linux
+if [[ "$choice_snap" =~ ^[Yy]$ ]]; then
+    cd ~/Downloads
+    git clone https://aur.archlinux.org/snapd.git
+    cd snapd
+    makepkg -si
+    sudo systemctl enable --now snapd.socket
+    sudo ln -s /var/lib/snapd/snap /snap
+    # install snap apps
+    read -p "Install VS Code and Teams for Linux? (y/n): " choice_snap_apps
+    if [[ "$choice_snap_apps" =~ ^[Yy]$ ]]; then
+        sudo snap install --classic code
+        sudo snap install teams-for-linux
+    fi
+fi
+
+
 
 # back to scripts directory
 cd $DIR
