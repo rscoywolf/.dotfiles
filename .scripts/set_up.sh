@@ -6,9 +6,19 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # update and sync
 sudo pacman -Syu
 
+INSTALL_FLAGS="-S --needed --noconfirm --quiet"
 
 # install the packages quietly
-sudo pacman -S --needed --noconfirm --quiet i3 neovim feh fish redshift firefox signal-desktop discord neofetch fzf
+sudo pacman $INSTALL_FLAGS i3 
+sudo pacman $INSTALL_FLAGS neovim 
+sudo pacman $INSTALL_FLAGS feh 
+sudo pacman $INSTALL_FLAGS fish 
+sudo pacman $INSTALL_FLAGS redshift 
+sudo pacman $INSTALL_FLAGS firefox 
+sudo pacman $INSTALL_FLAGS signal-desktop 
+sudo pacman $INSTALL_FLAGS discord 
+sudo pacman $INSTALL_FLAGS neofetch 
+sudo pacman $INSTALL_FLAGS fzf
 
 # latex packages
 read -p "Do you want to install latex packages? (y/n): " choice_latex
