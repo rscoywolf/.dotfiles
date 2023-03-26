@@ -73,12 +73,14 @@ fi
 cd $DIR
 
 # run the script called link_configs.sh
-echo "Setting up config files (old ones renamed to *_bkup)\n-----------------------"
+echo "Setting up config files (old ones renamed to *_bkup)"
+echo "-----------------------"
 chmod +x link_configs.sh
 (./link_configs.sh)
 
 # put scripts in bin
-echo "Setting up scripts in /bin/\n-----------------------"
+echo "Setting up scripts in /bin/"
+echo "-----------------------"
 chmod +x link_bin.sh
 (./link_bin.sh)
 
