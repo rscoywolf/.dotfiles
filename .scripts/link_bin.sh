@@ -9,5 +9,6 @@ for file in ~/.dotfiles/.scripts/.bin/*; do
         sudo rm "$target_file"
     fi
     chmod +x "$file"
+    echo "linking $target_file..."
     sudo ln -s "$file" "$target_file"
 done

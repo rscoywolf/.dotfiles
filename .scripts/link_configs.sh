@@ -8,6 +8,7 @@ for file in ~/.dotfiles/.config/*; do
     elif [[ -L "$target_file" ]]; then
         rm "$target_file"
     fi
+    echo "linking $target_file..."
     ln -s "$file" "$target_file"
 done
 
@@ -19,5 +20,6 @@ for file in ~/.dotfiles/.homeconfig/; do
     elif [[ -L "$target_file" ]]; then
         rm "$target_file"
     fi
+    echo "linking $target_file..."
     ln -s "$file" "$target_file"
 done
