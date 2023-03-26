@@ -3,29 +3,41 @@
 # store current directory to variable
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-# install the packages
-sudo pacman -S i3
-sudo pacman -S neovim
-sudo pacman -S feh
-sudo pacman -S fish
-sudo pacman -S redshift
-sudo pacman -S firefox
-sudo pacman -S signal-desktop
-sudo pacman -S discord
-sudo pacman -S neofetch
-sudo pacman -S fzf
-# all the latex stuff i need to compile locally
-sudo pacman -S texlive-most
+# update and sync
+sudo pacman -Syu
 
-# nvidia drivers
-sudo mhwd -a pci nonfree 0300
+
+# install the packages quietly
+sudo pacman -S --needed --noconfirm --quiet i3 neovim feh fish redshift firefox signal-desktop discord neofetch fzf
+
+# latex packages
+read -p "Do you want to install latex packages? (y/n): " choice_latex
+
+if [[ "$choice_latex" =~ ^[Yy]$ ]]; then
+    sudo pacman -S --needed -noconfirm --quiet texlive-most
+fi
+
+# install drivers
+read -p "Does this PC have an NVIDIA chip that is supported? (y/n): " supported_nvidia
+
+if [[ "$supported_nvidia" =~ ^[Yy]$ ]]; then
+    sudo mhwd -a pci nonfree 0300
+else
+    read -p "Try installing the auto-best drivers? (y/n): " auto_best_drivers
+    if [[ "$auto_best_drivers" =~ ^[Yy]$ ]]; then
+        sudo mhwd -a pci
+    fi
+fi
 
 # geforce now (electron)
-cd ~
-sudo pacman -S git base-devel
-git clone https://aur.archlinux.org/geforcenow-electron.git
-cd geforcenow-electron
-makepkg -si
+read -p "Install GeForce Now? (y/n): " choice_geforce_now
+if [[ "$choice_geforce_now" =~ ^[Yy]$ ]]; then
+    cd ~
+    sudo pacman -S git base-devel
+    git clone https://aur.archlinux.org/geforcenow-electron.git
+    cd geforcenow-electron
+    makepkg -si
+fi
 
 # install snap
 cd ~/Downloads
@@ -43,18 +55,24 @@ sudo snap install teams-for-linux
 cd $DIR
 
 # run the script called link_configs.sh
+echo "Setting up config files (old ones renamed to *_bkup)..."
 chmod +x link_configs.sh
 (./link_configs.sh)
 
 # put scripts in bin
+echo "Setting up scripts in /bin/..."
 chmod +x link_bin.sh
 (./link_bin.sh)
 
 
 # git
+echo "Configuring git..."
 git config --global user.email "rscoywolf@gmail.com"
 git config --global user.name "rscoywolf"
 git config credential.helper store
 
 cd ~
-git clone https://github.com/rscoywolf/schoolwork.git
+read -p "Clone schoolwork repo? (y/n): " clone_schoolwork
+if [[ "$clone_schoolwork" =~ ^[Yy]$ ]]; then
+    git clone https://github.com/rscoywolf/schoolwork.git
+fi
