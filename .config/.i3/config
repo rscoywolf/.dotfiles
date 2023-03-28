@@ -422,5 +422,5 @@ exec "export BROWSER=/usr/bin/firefox"
 exec "redshift"
 exec "backgrounds.sh"
 # run the script sleep.sh on the shortcut super+alt+l
-bindsym Mod4+l exec sleep.sh
-bindsym Mod1+l exec blurlock 
+bindsym Mod4+Mod1+l exec sleep.sh
+bindsym Mod4+Ctrl+l exec blurlock 
