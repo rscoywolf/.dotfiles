@@ -1,4 +1,8 @@
 #!/bin/bash
+
+export HOME="/home/wolf" 
+
+
 cd ~/.dotfiles/
 git pull
 git add .
