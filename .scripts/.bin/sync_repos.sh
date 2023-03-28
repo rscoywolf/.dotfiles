@@ -1,7 +1,6 @@
 #!/bin/bash
 
-export HOME="/home/wolf" 
-
+export GIT_ASKPASS="~/.dotfiles/.scripts/git-credential-helper.sh"
 
 cd ~/.dotfiles/
 git pull
