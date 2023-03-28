@@ -1,7 +1,7 @@
 #!/bin/bash
 
-chmod +x "~/.dotfiles/.scripts/git-credential-helper.sh"
-export GIT_ASKPASS="~/.dotfiles/.scripts/git-credential-helper.sh"
+chmod +x "/home/wolf/.dotfiles/.scripts/git-credential-helper.sh"
+export GIT_ASKPASS="/home/wolf/.dotfiles/.scripts/git-credential-helper.sh"
 
 cd ~/.dotfiles/
 git pull
