@@ -1,5 +1,6 @@
 #!/bin/bash
 
+chmod +x "~/.dotfiles/.scripts/git-credential-helper.sh"
 export GIT_ASKPASS="~/.dotfiles/.scripts/git-credential-helper.sh"
 
 cd ~/.dotfiles/
