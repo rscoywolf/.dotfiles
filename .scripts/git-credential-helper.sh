@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set the path to your .git-credentials file
-GIT_CREDENTIALS_FILE="~/.git-credentials"
+GIT_CREDENTIALS_FILE="/home/wolf/.git-credentials"
 
 # read the first line of the .git-credentials file (assuming it contains your PAT)
 CREDENTIALS=$(head -n 1 "$GIT_CREDENTIALS_FILE")
