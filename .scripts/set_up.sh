@@ -90,7 +90,7 @@ chmod +x link_bin.sh
 echo "Configuring git..."
 git config --global user.email "rscoywolf@gmail.com"
 git config --global user.name "rscoywolf"
-git config credential.helper store
+git config --global credential.helper store
 
 cd ~
 read -p "Clone schoolwork repo? (y/n): " clone_schoolwork
