@@ -19,6 +19,7 @@ sudo pacman $INSTALL_FLAGS signal-desktop
 sudo pacman $INSTALL_FLAGS discord 
 sudo pacman $INSTALL_FLAGS neofetch 
 sudo pacman $INSTALL_FLAGS fzf
+sudo pacman $INSTALL_FLAGS xfce4-settings
 
 # latex packages
 read -p "Do you want to install latex packages? (y/n): " choice_latex
