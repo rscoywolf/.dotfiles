@@ -1,18 +1,21 @@
 #!/bin/bash
 
-chmod +x "/home/wolf/.dotfiles/.scripts/git-credential-helper.sh"
-export GIT_ASKPASS="/home/wolf/.dotfiles/.scripts/git-credential-helper.sh"
+chmod +x "${HOME}/.dotfiles/.scripts/git-credential-helper.sh"
+export GIT_ASKPASS="${HOME}/.dotfiles/.scripts/git-credential-helper.sh"
 
-cd ~/.dotfiles/
-git pull
-git add .
-git commit -m "auto commit"
-git push
+REPO_FILE="${HOME}/.dotfiles/.scripts/repositories.txt"
 
-if [ -d ~/schoolwork ]; then
-    cd ~/schoolwork
-    git pull
-    git add .
-    git commit -m "auto commit"
-    git push
+if [[ ! -f "$REPO_FILE" ]]; then
+    echo "Error: Repository file '$REPO_FILE' not found."
+    exit 1
 fi
+
+while read -r repo; do
+    if [[ -d "${HOME}/${repo}" ]]; then
+        cd "${HOME}/${repo}"
+        git pull
+        git add .
+        git commit -m "auto commit"
+        git push
+    fi
+done < "$REPO_FILE"

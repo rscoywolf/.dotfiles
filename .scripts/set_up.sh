@@ -93,7 +93,7 @@ git config --global user.name "rscoywolf"
 git config --global credential.helper store
 
 cd ~
-read -p "Clone schoolwork repo? (y/n): " clone_schoolwork
-if [[ "$clone_schoolwork" =~ ^[Yy]$ ]]; then
-    git clone https://github.com/rscoywolf/schoolwork.git
+read -p "Clone repos? (y/n): " clone_repos
+if [[ "$clone_repos" =~ ^[Yy]$ ]]; then
+    (./clone_repos.sh)
 fi
