@@ -46,9 +46,7 @@ config.week_header.enable = true
     -- '╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝',
 -- }
 
-config.footer = {
-    '󰛨  Dala what you must.'
-}
+config.footer = {}
 
 config.packages = {}
 config.packages.enable = true
