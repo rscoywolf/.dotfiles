@@ -133,6 +133,9 @@ ex ()
   fi
 }
 
+# aliases
+alias ls="ls -al"
+alias vim="nvim"
 
 neofetch
 fish
