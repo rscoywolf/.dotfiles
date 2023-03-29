@@ -74,14 +74,16 @@ fi
 cd $DIR
 
 # run the script called link_configs.sh
+echo "----------------------------------------------------"
 echo "Setting up config files (old ones renamed to *_bkup)"
-echo "-----------------------"
+echo "----------------------------------------------------"
 chmod +x link_configs.sh
 (./link_configs.sh)
 
 # put scripts in bin
+echo "---------------------------"
 echo "Setting up scripts in /bin/"
-echo "-----------------------"
+echo "---------------------------"
 chmod +x link_bin.sh
 (./link_bin.sh)
 
@@ -95,5 +97,6 @@ git config --global credential.helper store
 cd ~
 read -p "Clone repos? (y/n): " clone_repos
 if [[ "$clone_repos" =~ ^[Yy]$ ]]; then
-    (./clone_repos.sh)
+    chmod +x ./.bin/clone_repos.sh
+    (./.bin/clone_repos.sh)
 fi
