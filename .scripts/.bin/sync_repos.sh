@@ -12,6 +12,9 @@ fi
 
 while read -r repo; do
     if [[ -d "${HOME}/${repo}" ]]; then
+        echo "-------------------------"
+        echo "${repo}"
+        echo "-------------------------"
         cd "${HOME}/${repo}"
         git pull
         git add .
