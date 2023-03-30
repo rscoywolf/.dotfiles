@@ -107,7 +107,7 @@ if status is-interactive
 
     # aliases
     alias vim="nvim"
-    alias cp="cp -i"                          # confirm before overwriting something
+    alias cp="cp -i" # confirm before overwriting something
 
     # run neofetch
     if type -q neofetch
