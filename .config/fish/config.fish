@@ -62,14 +62,6 @@ if status is-interactive
     end
 
 
-    # Enable colors for ls, etc.
-    set -gx LS_COLORS (dircolors -c)
-
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias fgrep='fgrep --color=auto'
-
     # ex - archive extractor
     # usage: ex <file>
     function ex
@@ -105,9 +97,16 @@ if status is-interactive
         end
     end
 
+    # disable greeting message
+    set -g fish_greeting
+
     # aliases
     alias vim="nvim"
     alias cp="cp -i" # confirm before overwriting something
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias fgrep='fgrep --color=auto'
 
     # run neofetch
     if type -q neofetch
