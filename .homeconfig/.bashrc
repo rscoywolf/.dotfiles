@@ -132,5 +132,4 @@ alias ls="ls -al"
 alias vim="nvim"
 alias cp="cp -i"                          # confirm before overwriting something
 
-neofetch
 fish

@@ -17,10 +17,31 @@ if status is-interactive
                 set vals (string join ";" $fgc $bgc)
                 set vals (string trim $vals ";")
 
-                set seq0 (test -n "$vals"; and printf "\e[${vals}m")
-                printf "  %-9s" "${seq0:-(default)}"
-                printf " ${seq0}TEXT\e[m"
-                printf " \e[${vals};1mBOLD\e[m"
+                set seq0 (test -n "$vals"; and printf "\e[%sm" $vals)
+                if set -q seq0
+                    printf "  %-9s" "$seq0"
+                else
+                    printf "  %-9s" "default"
+                end
+                for fgc in (seq 30 37)
+                    for bgc in (seq 40 47)
+                        set fgc (math $fgc - 37) # white
+                        set bgc (math $bgc - 40) # black
+
+                        set vals (string join ";" $fgc $bgc)
+                        set vals (string trim $vals ";")
+
+                        set seq0 (test -n "$vals"; and printf "\e[%sm" $vals)
+                        if set -q seq0
+                            printf "  %-9s" "$seq0"
+                        else
+                            printf "  %-9s" "default"
+                        end
+                        printf " %sTEXT\e[m" $seq0
+                        printf " \e[%s;1mBOLD\e[m" $vals
+                    end
+                    echo; echo
+                end
             end
             echo; echo
         end
@@ -40,28 +61,6 @@ if status is-interactive
             set -U fish_prompt_callback update_title
     end
 
-    # Colorful prompt
-    function fish_prompt
-        set -l use_color true
-        set -l safe_term (string replace -r "[^[:alnum:]]" "?" -- $TERM)
-
-        if test $EUID -eq 0
-            set_color -o red
-            printf "[%s " (hostname)
-            set_color -o cyan
-            printf "%s" (prompt_pwd)
-            set_color -o red
-            printf "]# "
-        else
-            set_color -o green
-            printf "[%s@%s " $USER (hostname)
-            set_color -o white
-            printf "%s" (prompt_pwd)
-            set_color -o green
-            printf "]$ "
-        end
-        set_color normal
-    end
 
     # Enable colors for ls, etc.
     set -gx LS_COLORS (dircolors -c)
@@ -107,16 +106,13 @@ if status is-interactive
     end
 
     # aliases
-    alias ls="ls -al"
     alias vim="nvim"
     alias cp="cp -i"                          # confirm before overwriting something
 
-    # Run neofetch
+    # run neofetch
     if type -q neofetch
         neofetch
     end
 
-    # Run fish
-    fish
 end
 
