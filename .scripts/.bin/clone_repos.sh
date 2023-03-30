@@ -14,7 +14,7 @@ while read -r repo; do
         echo "Repository '${repo}' already cloned."
     else
       echo "Cloning repository '${repo}'..."
-      git clone "${GH_BASEURL}${repo}.git" "${HOME}/${repo}"
+      git clone "${GH_BASEURL}${repo}.git" "${HOME}/${repo}" --recursive
     fi
 done < "$REPO_FILE"
 
