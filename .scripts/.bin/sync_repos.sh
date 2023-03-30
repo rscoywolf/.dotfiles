@@ -17,6 +17,12 @@ while read -r repo; do
         echo "-------------------------"
         cd "${HOME}/${repo}"
         git pull
+
+        # sync submodules
+        git submodule update --init --recursive
+        git submodule foreach --recursive git pull
+        git submodule foreach --recursive 'git add .; git commit -m "auto commit"; git push'
+
         git add .
         git commit -m "auto commit"
         git push
