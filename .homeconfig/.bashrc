@@ -87,13 +87,6 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-#alias cp="cp -i"                          # confirm before overwriting something
-#alias df='df -h'                          # human-readable sizes
-#alias free='free -m'                      # show sizes in MB
-#alias np='nano -w PKGBUILD'
-#alias more=less
-
-xhost +local:root > /dev/null 2>&1
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
@@ -136,6 +129,7 @@ ex ()
 # aliases
 alias ls="ls -al"
 alias vim="nvim"
+alias cp="cp -i"                          # confirm before overwriting something
 
 neofetch
 fish
