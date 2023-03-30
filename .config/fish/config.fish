@@ -107,6 +107,9 @@ if status is-interactive
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
+    function git_log
+        git log --graph --all --oneline
+    end
 
     # run neofetch
     if type -q neofetch
