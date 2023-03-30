@@ -80,6 +80,11 @@ echo "----------------------------------------------------"
 chmod +x .bin/link_configs.sh
 (./.bin/link_configs.sh)
 
+
+# source .Xresources
+xrdb -merge ~/.Xresources
+
+
 # put scripts in bin
 echo "---------------------------"
 echo "Setting up scripts in /bin/"
