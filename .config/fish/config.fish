@@ -73,6 +73,8 @@ if status is-interactive
                     tar xzf $argv[1]
                 case '*.bz2'
                     bunzip2 $argv[1]
+                case '*.tar.xz'
+                    tar -xf $argv[1]
                 case '*.rar'
                     unrar x $argv[1]
                 case '*.gz'
