@@ -5,13 +5,13 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # update and sync
 sudo pacman -Syu
-sudo pacman -S yay
 
-yay -S i3-gaps-rounded-git
 
 INSTALL_FLAGS="-S --needed --noconfirm --quiet"
 
 # install the packages quietly
+sudo pacman $INSTALL_FLAGS yay
+sudo pacman $INSTALL_FLAGS i3
 sudo pacman $INSTALL_FLAGS neovim 
 sudo pacman $INSTALL_FLAGS feh 
 sudo pacman $INSTALL_FLAGS fish 
@@ -24,6 +24,8 @@ sudo pacman $INSTALL_FLAGS fzf
 sudo pacman $INSTALL_FLAGS xfce4-settings
 sudo pacman $INSTALL_FLAGS unzip
 sudo pacman $INSTALL_FLAGS polybar
+sudo pacman $INSTALL_FLAGS nitrogen
+sudo pacman $INSTALL_FLAGS picom
 
 # latex packages
 read -p "Do you want to install latex packages? (y/n): " choice_latex
