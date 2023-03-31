@@ -19,8 +19,7 @@ while read -r repo; do
         git pull
 
         # sync submodules
-        git submodule update --init --recursive
-        git submodule foreach --recursive git pull
+        git submodule update --init --recursive --remote
         git submodule foreach --recursive 'git add .; git commit -m "auto commit"; git push'
 
         git add .
