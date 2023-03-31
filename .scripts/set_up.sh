@@ -5,11 +5,13 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # update and sync
 sudo pacman -Syu
+sudo pacman -S yay
+
+yay -S i3-gaps-rounded-git
 
 INSTALL_FLAGS="-S --needed --noconfirm --quiet"
 
 # install the packages quietly
-sudo pacman $INSTALL_FLAGS i3 
 sudo pacman $INSTALL_FLAGS neovim 
 sudo pacman $INSTALL_FLAGS feh 
 sudo pacman $INSTALL_FLAGS fish 
