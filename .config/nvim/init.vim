@@ -23,7 +23,7 @@ set nowrap
 set splitbelow
 set splitright
 set hidden
-set scrolloff=15
+set scrolloff=7
 set noshowmode
 set updatetime=250 
 set encoding=UTF-8

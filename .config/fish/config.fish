@@ -109,6 +109,7 @@ if status is-interactive
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
+    alias cls='clear'
     function git_log
         git log --graph --all --oneline
     end
