@@ -362,6 +362,9 @@ bindsym $mod+m bar mode toggle
 
   client.background       #2B2C2B
 
+# Set the radius of the rounded corners
+for_window [class="^.*"] border_radius 10
+
 #############################
 ### settings for i3-gaps: ###
 #############################
