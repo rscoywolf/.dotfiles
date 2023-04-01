@@ -154,8 +154,8 @@ function setup_display_manager() {
 
 function install_dejavu_font() {
 	cd $HOME/.dotfiles/.fonts/dejavu_sans_mono/
-	mkdir -p ~/.local/share/fonts/NerdFonts
-	cp *.ttf ~/.local/share/fonts/NerdFonts/
+	mkdir -p ~/.local/share/fonts
+	cp *.ttf ~/.local/share/fonts
 	fc-cache -fv
 }
 
