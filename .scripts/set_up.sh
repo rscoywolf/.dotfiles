@@ -152,6 +152,13 @@ function setup_display_manager() {
 
 }
 
+function install_dejavu_font() {
+	cd $HOME/.dotfiles/.fonts/dejavu_sans_mono/
+	mkdir -p ~/.local/share/fonts/NerdFonts
+	mv *.ttf ~/.local/share/fonts/NerdFonts/
+	fc-cache -fv
+}
+
 install_packages
 setup_network_manager
 create_non_root_user
@@ -163,4 +170,5 @@ install_snap
 setup_configs
 setup_bin_scripts
 setup_git
+install_dejavu_font
 clone_repos
