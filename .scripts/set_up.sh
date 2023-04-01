@@ -32,6 +32,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS pacmanfm
 	sudo pacman $INSTALL_FLAGS fisher
 	sudo pacman $INSTALL_FLAGS nodejs
+	sudo pacman $INSTALL_FLAGS npm
 }
 
 function install_latex_packages() {
