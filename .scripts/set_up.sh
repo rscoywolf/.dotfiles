@@ -84,7 +84,7 @@ echo "----------------------------------------------------"
 echo "Setting up config files (old ones renamed to *_bkup)"
 echo "----------------------------------------------------"
 chmod +x .bin/link_configs.sh
-(./.bin/link_configs.sh)
+(.bin/link_configs.sh)
 
 
 # source .Xresources
@@ -96,7 +96,7 @@ echo "---------------------------"
 echo "Setting up scripts in /bin/"
 echo "---------------------------"
 chmod +x link_bin.sh
-(./link_bin.sh)
+(.bin/link_bin.sh)
 
 
 # git
