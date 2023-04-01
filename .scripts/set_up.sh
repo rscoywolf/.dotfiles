@@ -31,9 +31,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS picom
 	sudo pacman $INSTALL_FLAGS pacmanfm
 	sudo pacman $INSTALL_FLAGS fisher
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-	fish -c "fisher install FabioAntunes/fish-nvm edc/bass"
-	fish -c "nvm install node"
+	sudo pacman $INSTALL_FLAGS nodejs
 }
 
 function install_latex_packages() {
