@@ -9,6 +9,9 @@ if true then return {} end
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+  -- lazyvim
+  { "lervag/vimtex" },
+
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
 
