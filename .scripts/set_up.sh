@@ -15,6 +15,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS i3
 	sudo pacman $INSTALL_FLAGS neovim
 	sudo pacman $INSTALL_FLAGS feh
+	sudo pacman $INSTALL_FLAGS alacritty
 	sudo pacman $INSTALL_FLAGS fish
 	chsh -s $(which fish)
 	sudo pacman $INSTALL_FLAGS redshift
