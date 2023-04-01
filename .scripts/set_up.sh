@@ -34,6 +34,8 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS nodejs
 	sudo pacman $INSTALL_FLAGS npm
 	sudo pacman $INSTALL_FLAGS lazygit
+	yay -Syu
+	yay $INSTALL_FLAGS zathura
 }
 
 function install_latex_packages() {
