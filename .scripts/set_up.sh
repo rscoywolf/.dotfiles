@@ -31,6 +31,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS picom
 	sudo pacman $INSTALL_FLAGS pacmanfm
 	sudo pacman $INSTALL_FLAGS git
+
 }
 
 function install_latex_packages() {
@@ -123,7 +124,37 @@ function clone_repos() {
 	fi
 }
 
+function setup_network_manager() {
+	read -p "Install and configure networkmanager? (y/n): " choice_netmang
+	if [[ "$choice_netmang" =~ ^[Yy]$ ]]; then
+		sudo pacman -S --needed --noconfirm --quiet networkmanager
+		sudo systemctl enable --now NetworkManager
+	fi
+}
+
+function create_non_root_user() {
+	read -p "Create a non-root user? (y/n): " choice_create_user
+	if [[ "$choice_create_user" =~ ^[Yy]$ ]]; then
+		read -p "Enter the username for the non-root user: " username
+		sudo useradd -m -G wheel,audio,video,storage,optical -s /bin/bash $username
+		sudo passwd $username
+		sudo sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+	fi
+}
+
+function setup_display_manager() {
+	read -p "Setup display manager? (y/n): " choice_setup_display
+	if [[ "$choice_setup_display" =~ ^[Yy]$ ]]; then
+		sudo pacman -S --needed --noconfirm --quiet lightdm lightdm-gtk-greeter
+		sudo systemctl enable --now lightdm
+	fi
+
+}
+
 install_packages
+setup_network_manager
+create_non_root_user
+setup_display_manager
 install_latex_packages
 install_nvidia_drivers
 install_geforce_now
