@@ -35,6 +35,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS npm
 	sudo pacman $INSTALL_FLAGS lazygit
 	sudo pacman $INSTALL_FLAGS zathura-pdf-poppler
+	sudo pacman $INSTALL_FLAGS scrot
 	yay -Syu
 	yay $INSTALL_FLAGS zathura
 }
