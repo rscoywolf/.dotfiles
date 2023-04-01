@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 function install_packages() {
 	# store current directory to variable
 	DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
@@ -18,6 +16,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS neovim
 	sudo pacman $INSTALL_FLAGS feh
 	sudo pacman $INSTALL_FLAGS fish
+	chsh -s $(which fish)
 	sudo pacman $INSTALL_FLAGS redshift
 	sudo pacman $INSTALL_FLAGS firefox
 	sudo pacman $INSTALL_FLAGS signal-desktop
@@ -30,8 +29,10 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS nitrogen
 	sudo pacman $INSTALL_FLAGS picom
 	sudo pacman $INSTALL_FLAGS pacmanfm
-	sudo pacman $INSTALL_FLAGS nvm
-	nvm install node
+	sudo pacman $INSTALL_FLAGS fisher
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+	fish -c "fisher install FabioAntunes/fish-nvm edc/bass"
+	fish -c "nvm install node"
 }
 
 function install_latex_packages() {
