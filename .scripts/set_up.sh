@@ -30,12 +30,12 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS nitrogen
 	sudo pacman $INSTALL_FLAGS picom
 	sudo pacman $INSTALL_FLAGS pacmanfm
-	sudo pacman $INSTALL_FLAGS git
-
+	sudo pacman $INSTALL_FLAGS nvm
+	nvm install node
 }
 
 function install_latex_packages() {
-	read -p "Do you want to install latex packages? (y/n): " choice_latex
+	read -p "Do you want to install latex packages? [y/N]: " choice_latex
 
 	if [[ "$choice_latex" =~ ^[Yy]$ ]]; then
 		sudo pacman -S --needed -noconfirm --quiet texlive-most
@@ -43,12 +43,12 @@ function install_latex_packages() {
 }
 
 function install_nvidia_drivers() {
-	read -p "Does this PC have an NVIDIA chip that is supported? (y/n): " supported_nvidia
+	read -p "Does this PC have an NVIDIA chip that is supported? [y/N]: " supported_nvidia
 
 	if [[ "$supported_nvidia" =~ ^[Yy]$ ]]; then
 		sudo mhwd -a pci nonfree 0300
 	else
-		read -p "Try installing the auto-best drivers? (y/n): " auto_best_drivers
+		read -p "Try installing the auto-best drivers? [y/N]: " auto_best_drivers
 		if [[ "$auto_best_drivers" =~ ^[Yy]$ ]]; then
 			sudo mhwd -a pci
 		fi
@@ -56,7 +56,7 @@ function install_nvidia_drivers() {
 }
 
 function install_geforce_now() {
-	read -p "Install GeForce Now? (y/n): " choice_geforce_now
+	read -p "Install GeForce Now? [y/N]: " choice_geforce_now
 	if [[ "$choice_geforce_now" =~ ^[Yy]$ ]]; then
 		cd ~
 		sudo pacman -S git base-devel
@@ -67,7 +67,7 @@ function install_geforce_now() {
 }
 
 function install_snap() {
-	read -p "Install snap? (y/n): " choice_snap
+	read -p "Install snap? [y/N]: " choice_snap
 
 	if [[ "$choice_snap" =~ ^[Yy]$ ]]; then
 		cd ~/Downloads
@@ -77,7 +77,7 @@ function install_snap() {
 		sudo systemctl enable --now snapd.socket
 		sudo ln -s /var/lib/snapd/snap /snap
 		# install snap apps
-		read -p "Install VS Code and Teams for Linux? (y/n): " choice_snap_apps
+		read -p "Install VS Code and Teams for Linux? [y/N]: " choice_snap_apps
 		if [[ "$choice_snap_apps" =~ ^[Yy]$ ]]; then
 			sudo snap install --classic code
 			sudo snap install teams-for-linux
@@ -117,7 +117,7 @@ function setup_git() {
 
 function clone_repos() {
 	cd ~
-	read -p "Clone repos? (y/n): " clone_repos
+	read -p "Clone repos? [y/N]: " clone_repos
 	if [[ "$clone_repos" =~ ^[Yy]$ ]]; then
 		chmod +x ./.bin/clone_repos.sh
 		(./.bin/clone_repos.sh)
@@ -125,7 +125,7 @@ function clone_repos() {
 }
 
 function setup_network_manager() {
-	read -p "Install and configure networkmanager? (y/n): " choice_netmang
+	read -p "Install and configure networkmanager? [y/N]: " choice_netmang
 	if [[ "$choice_netmang" =~ ^[Yy]$ ]]; then
 		sudo pacman -S --needed --noconfirm --quiet networkmanager
 		sudo systemctl enable --now NetworkManager
@@ -133,7 +133,7 @@ function setup_network_manager() {
 }
 
 function create_non_root_user() {
-	read -p "Create a non-root user? (y/n): " choice_create_user
+	read -p "Create a non-root user? [y/N]: " choice_create_user
 	if [[ "$choice_create_user" =~ ^[Yy]$ ]]; then
 		read -p "Enter the username for the non-root user: " username
 		sudo useradd -m -G wheel,audio,video,storage,optical -s /bin/bash $username
@@ -143,7 +143,7 @@ function create_non_root_user() {
 }
 
 function setup_display_manager() {
-	read -p "Setup display manager? (y/n): " choice_setup_display
+	read -p "Setup display manager? [y/N]: " choice_setup_display
 	if [[ "$choice_setup_display" =~ ^[Yy]$ ]]; then
 		sudo pacman -S --needed --noconfirm --quiet lightdm lightdm-gtk-greeter
 		sudo systemctl enable --now lightdm
