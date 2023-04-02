@@ -39,9 +39,9 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS xclip
 	sudo pacman $INSTALL_FLAGS thunderbird
 	sudo pacman $INSTALL_FLAGS rofi
+	sudo pacman $INSTALL_FLAGS picom
 	yay -Syu
 	yay $INSTALL_FLAGS zathura
-	yay $INSTALL_FLAGS picom-jonaburg-git
 }
 
 function install_latex_packages() {
