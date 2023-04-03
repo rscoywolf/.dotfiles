@@ -1,10 +1,7 @@
 #!/bin/bash
 
+INSTALL_FLAGS="--needed --noconfirm --quiet"
 function install_packages() {
-	# store current directory to variable
-	DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-	INSTALL_FLAGS="--needed --noconfirm --quiet"
-
 	# update and sync
 	sudo pacman -Syu $INSTALL_FLAGS
 
@@ -50,7 +47,7 @@ function install_latex_packages() {
 	read -p "Do you want to install latex packages? [y/N]: " choice_latex
 
 	if [[ "$choice_latex" =~ ^[Yy]$ ]]; then
-		sudo pacman -S --needed --noconfirm --quiet texlive-most
+		sudo pacman -S $INSTALL_FLAGS texlive-most
 	fi
 }
 
@@ -98,17 +95,12 @@ function install_snap() {
 }
 
 function setup_configs() {
-	cd $DIR
-
 	# run the script called link_configs.sh
 	echo "----------------------------------------------------"
 	echo "Setting up config files (old ones renamed to *_bkup)"
 	echo "----------------------------------------------------"
 	chmod +x .bin/link_configs.sh
 	(.bin/link_configs.sh)
-
-	# source .Xresources
-	xrdb -merge ~/.Xresources
 }
 
 function setup_bin_scripts() {
