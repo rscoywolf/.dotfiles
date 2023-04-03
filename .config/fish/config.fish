@@ -113,7 +113,7 @@ if status is-interactive
     alias fgrep='fgrep --color=auto'
     alias cls='clear'
     alias lg='lazygit'
-    alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+    alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'
     function git_log
         git log --graph --all --oneline
     end
