@@ -41,6 +41,7 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS picom
 	sudo pacman -S $INSTALL_FLAGS ranger
 	sudo pacman -S $INSTALL_FLAGS zathura
+	sudo pacman -S $INSTALL_FLAGS vlc
 	yay -Syu
 	yay -S $INSTALL_FLAGS neo-matrix
 }
