@@ -35,15 +35,14 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS xclip
 	sudo pacman -S $INSTALL_FLAGS thunderbird
 	sudo pacman -S $INSTALL_FLAGS rofi
+	sudo pacman -S $INSTALL_FLAGS picom
 	sudo pacman -S $INSTALL_FLAGS ranger
 	sudo pacman -S $INSTALL_FLAGS zathura
 	sudo pacman -S $INSTALL_FLAGS vlc
-	sudo pacman -S $INSTALL_FLAGS nvidia-settings
 
 	# yay
 	yay -Syu
 	yay -S $INSTALL_FLAGS neo-matrix
-	yay -S $INSTALL_FLAGS picom-jonaburg-git
 }
 
 function install_latex_packages() {
@@ -59,6 +58,8 @@ function install_nvidia_drivers() {
 
 	if [[ "$supported_nvidia" =~ ^[Yy]$ ]]; then
 		sudo mhwd -a pci nonfree 0300
+		sudo pacman -S $INSTALL_FLAGS nvidia
+
 	else
 		read -p "Try installing the auto-best drivers? [y/N]: " auto_best_drivers
 		if [[ "$auto_best_drivers" =~ ^[Yy]$ ]]; then
