@@ -35,15 +35,15 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS xclip
 	sudo pacman -S $INSTALL_FLAGS thunderbird
 	sudo pacman -S $INSTALL_FLAGS rofi
-	sudo pacman -S $INSTALL_FLAGS picom
 	sudo pacman -S $INSTALL_FLAGS ranger
 	sudo pacman -S $INSTALL_FLAGS zathura
 	sudo pacman -S $INSTALL_FLAGS vlc
 	sudo pacman -S $INSTALL_FLAGS nvidia-settings
 
-	#yay
+	# yay
 	yay -Syu
 	yay -S $INSTALL_FLAGS neo-matrix
+	yay -S $INSTALL_FLAGS picom-jonaburg-git
 }
 
 function install_latex_packages() {
