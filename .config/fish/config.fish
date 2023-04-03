@@ -113,6 +113,7 @@ if status is-interactive
     alias fgrep='fgrep --color=auto'
     alias cls='clear'
     alias lg='lazygit'
+    alias ranger='ranger --choosedir'
     function git_log
         git log --graph --all --oneline
     end
