@@ -112,6 +112,7 @@ if status is-interactive
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias cls='clear'
+    alias lg='lazygit'
     function git_log
         git log --graph --all --oneline
     end
