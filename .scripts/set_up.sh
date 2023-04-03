@@ -50,7 +50,7 @@ function install_latex_packages() {
 	read -p "Do you want to install latex packages? [y/N]: " choice_latex
 
 	if [[ "$choice_latex" =~ ^[Yy]$ ]]; then
-		sudo pacman -S --needed -noconfirm --quiet texlive-most
+		sudo pacman -S --needed --noconfirm --quiet texlive-most
 	fi
 }
 
