@@ -39,6 +39,8 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS ranger
 	sudo pacman -S $INSTALL_FLAGS zathura
 	sudo pacman -S $INSTALL_FLAGS vlc
+	sudo pacman -S $INSTALL_FLAGS findutils
+	sudo pacman -S $INSTALL_FLAGS mlocate
 
 	# yay
 	yay -Syu
