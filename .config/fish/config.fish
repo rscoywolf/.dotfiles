@@ -21,7 +21,7 @@ if status is-interactive
                 if set -q seq0
                     printf "  %-9s" "$seq0"
                 else
-                    printf "  %-9s" "default"
+                    printf "  %-9s" default
                 end
                 for fgc in (seq 30 37)
                     for bgc in (seq 40 47)
@@ -35,21 +35,23 @@ if status is-interactive
                         if set -q seq0
                             printf "  %-9s" "$seq0"
                         else
-                            printf "  %-9s" "default"
+                            printf "  %-9s" default
                         end
                         printf " %sTEXT\e[m" $seq0
                         printf " \e[%s;1mBOLD\e[m" $vals
                     end
-                    echo; echo
+                    echo
+                    echo
                 end
             end
-            echo; echo
+            echo
+            echo
         end
     end
 
     # Change the window title of X terminals
     switch $TERM
-        case 'xterm*' 'rxvt*' 'Eterm*' 'aterm' 'kterm' 'gnome*' 'interix' 'konsole*'
+        case 'xterm*' 'rxvt*' 'Eterm*' aterm kterm 'gnome*' interix 'konsole*'
             function update_title
                 echo -ne "\033]0;{$USER}@{$HOSTNAME%%.*}:{$PWD/#$HOME/\~}\007"
             end
@@ -119,5 +121,8 @@ if status is-interactive
         neofetch
     end
 
-end
+    # set default text editor
+    set -gx VISUAL nvim
+    set -gx EDITOR $VISUAL
 
+end

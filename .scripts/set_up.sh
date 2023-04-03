@@ -40,6 +40,7 @@ function install_packages() {
 	sudo pacman $INSTALL_FLAGS thunderbird
 	sudo pacman $INSTALL_FLAGS rofi
 	sudo pacman $INSTALL_FLAGS picom
+	sudo pacman $INSTALL_FLAGS ranger
 	yay -Syu
 	yay $INSTALL_FLAGS zathura
 }
