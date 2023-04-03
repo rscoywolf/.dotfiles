@@ -3,46 +3,45 @@
 function install_packages() {
 	# store current directory to variable
 	DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+	INSTALL_FLAGS="--needed --noconfirm --quiet"
 
 	# update and sync
-	sudo pacman -Syu
-
-	INSTALL_FLAGS="-S --needed --noconfirm --quiet"
+	sudo pacman -Syu $INSTALL_FLAGS
 
 	# install the packages quietly
 
-	sudo pacman $INSTALL_FLAGS yay
-	sudo pacman $INSTALL_FLAGS i3
-	sudo pacman $INSTALL_FLAGS neovim
-	sudo pacman $INSTALL_FLAGS feh
-	sudo pacman $INSTALL_FLAGS alacritty
-	sudo pacman $INSTALL_FLAGS fish
+	sudo pacman -S $INSTALL_FLAGS yay
+	sudo pacman -S $INSTALL_FLAGS i3
+	sudo pacman -S $INSTALL_FLAGS neovim
+	sudo pacman -S $INSTALL_FLAGS feh
+	sudo pacman -S $INSTALL_FLAGS alacritty
+	sudo pacman -S $INSTALL_FLAGS fish
 	chsh -s $(which fish)
-	sudo pacman $INSTALL_FLAGS redshift
-	sudo pacman $INSTALL_FLAGS firefox
-	sudo pacman $INSTALL_FLAGS signal-desktop
-	sudo pacman $INSTALL_FLAGS discord
-	sudo pacman $INSTALL_FLAGS neofetch
-	sudo pacman $INSTALL_FLAGS fzf
-	sudo pacman $INSTALL_FLAGS xfce4-settings
-	sudo pacman $INSTALL_FLAGS unzip
-	sudo pacman $INSTALL_FLAGS polybar
-	sudo pacman $INSTALL_FLAGS nitrogen
-	sudo pacman $INSTALL_FLAGS picom
-	sudo pacman $INSTALL_FLAGS pacmanfm
-	sudo pacman $INSTALL_FLAGS fisher
-	sudo pacman $INSTALL_FLAGS nodejs
-	sudo pacman $INSTALL_FLAGS npm
-	sudo pacman $INSTALL_FLAGS lazygit
-	sudo pacman $INSTALL_FLAGS zathura-pdf-poppler
-	sudo pacman $INSTALL_FLAGS scrot
-	sudo pacman $INSTALL_FLAGS xclip
-	sudo pacman $INSTALL_FLAGS thunderbird
-	sudo pacman $INSTALL_FLAGS rofi
-	sudo pacman $INSTALL_FLAGS picom
-	sudo pacman $INSTALL_FLAGS ranger
+	sudo pacman -S $INSTALL_FLAGS redshift
+	sudo pacman -S $INSTALL_FLAGS firefox
+	sudo pacman -S $INSTALL_FLAGS signal-desktop
+	sudo pacman -S $INSTALL_FLAGS discord
+	sudo pacman -S $INSTALL_FLAGS neofetch
+	sudo pacman -S $INSTALL_FLAGS fzf
+	sudo pacman -S $INSTALL_FLAGS xfce4-settings
+	sudo pacman -S $INSTALL_FLAGS unzip
+	sudo pacman -S $INSTALL_FLAGS polybar
+	sudo pacman -S $INSTALL_FLAGS nitrogen
+	sudo pacman -S $INSTALL_FLAGS picom
+	sudo pacman -S $INSTALL_FLAGS pacmanfm
+	sudo pacman -S $INSTALL_FLAGS fisher
+	sudo pacman -S $INSTALL_FLAGS nodejs
+	sudo pacman -S $INSTALL_FLAGS npm
+	sudo pacman -S $INSTALL_FLAGS lazygit
+	sudo pacman -S $INSTALL_FLAGS zathura-pdf-poppler
+	sudo pacman -S $INSTALL_FLAGS scrot
+	sudo pacman -S $INSTALL_FLAGS xclip
+	sudo pacman -S $INSTALL_FLAGS thunderbird
+	sudo pacman -S $INSTALL_FLAGS rofi
+	sudo pacman -S $INSTALL_FLAGS picom
+	sudo pacman -S $INSTALL_FLAGS ranger
+	sudo pacman -S $INSTALL_FLAGS zathura
 	yay -Syu
-	yay $INSTALL_FLAGS zathura
 }
 
 function install_latex_packages() {
@@ -127,11 +126,10 @@ function setup_git() {
 }
 
 function clone_repos() {
-	cd ~
 	read -p "Clone repos? [y/N]: " clone_repos
 	if [[ "$clone_repos" =~ ^[Yy]$ ]]; then
-		chmod +x ./.bin/clone_repos.sh
-		(./.bin/clone_repos.sh)
+		chmod +x ~/.dotfiles/.scripts/.bin/clone_repos.sh
+		(~/.dotfiles/.scripts/.bin/clone_repos.sh)
 	fi
 }
 
