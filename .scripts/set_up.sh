@@ -42,6 +42,7 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS ranger
 	sudo pacman -S $INSTALL_FLAGS zathura
 	yay -Syu
+	yay -S $INSTALL_FLAGS neo-matrix
 }
 
 function install_latex_packages() {
