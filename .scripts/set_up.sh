@@ -41,13 +41,6 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS vlc
 	sudo pacman -S $INSTALL_FLAGS nvidia-settings
 
-	# paru
-	sudo pacman -S $INSTALL_FLAGS base-devel
-	git clone https://aur.archlinux.org/paru.git
-	cd paru
-	makepkg -si
-	paru -S $INSTALL_FLAGS updates-pacman-aurhelper
-
 	#yay
 	yay -Syu
 	yay -S $INSTALL_FLAGS neo-matrix
