@@ -28,12 +28,17 @@ function install_packages() {
 	sudo pacman -Syu $INSTALL_FLAGS
 
 	# install the packages
+	PKGS_FILE="$(dirname "$0")/pacman-pkgs.txt"
+	if [ ! -f "$PKGS_FILE" ]; then
+		echo "Error: pacman-pkgs.txt not found in the script directory"
+		exit 1
+	fi
 
 	while IFS= read -r package; do
 		if [[ ! -z "$package" && ! "$package" =~ ^\s*# ]]; then
 			install_package_if_not_installed $package
 		fi
-	done <"pacman-pkgs.txt"
+	done <"$PKGS_FILE"
 
 	chsh -s $(which fish)
 
