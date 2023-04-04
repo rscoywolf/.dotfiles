@@ -1,48 +1,27 @@
 #!/bin/bash
 
 INSTALL_FLAGS="--needed --noconfirm --quiet"
+
+function install_package_if_not_installed() {
+	package_name=$1
+	if ! pacman -Qi $package_name >/dev/null 2>&1; then
+		sudo pacman -S $INSTALL_FLAGS $package_name
+	fi
+}
+
 function install_packages() {
 	# update and sync
 	sudo pacman -Syu $INSTALL_FLAGS
 
-	# install the packages quietly
+	# install the packages
 
-	sudo pacman -S $INSTALL_FLAGS yay
-	sudo pacman -S $INSTALL_FLAGS i3
-	sudo pacman -S $INSTALL_FLAGS neovim
-	sudo pacman -S $INSTALL_FLAGS feh
-	sudo pacman -S $INSTALL_FLAGS alacritty
-	sudo pacman -S $INSTALL_FLAGS fish
+	while IFS= read -r package; do
+		if [[ ! -z "$package" && ! "$package" =~ ^\s*# ]]; then
+			install_package_if_not_installed $package
+		fi
+	done <"pacman-pkgs.txt"
+
 	chsh -s $(which fish)
-	sudo pacman -S $INSTALL_FLAGS redshift
-	sudo pacman -S $INSTALL_FLAGS firefox
-	sudo pacman -S $INSTALL_FLAGS signal-desktop
-	sudo pacman -S $INSTALL_FLAGS discord
-	sudo pacman -S $INSTALL_FLAGS neofetch
-	sudo pacman -S $INSTALL_FLAGS fzf
-	sudo pacman -S $INSTALL_FLAGS xfce4-settings
-	sudo pacman -S $INSTALL_FLAGS unzip
-	sudo pacman -S $INSTALL_FLAGS polybar
-	sudo pacman -S $INSTALL_FLAGS nitrogen
-	sudo pacman -S $INSTALL_FLAGS picom
-	sudo pacman -S $INSTALL_FLAGS pacmanfm
-	sudo pacman -S $INSTALL_FLAGS fisher
-	sudo pacman -S $INSTALL_FLAGS nodejs
-	sudo pacman -S $INSTALL_FLAGS npm
-	sudo pacman -S $INSTALL_FLAGS lazygit
-	sudo pacman -S $INSTALL_FLAGS zathura-pdf-poppler
-	sudo pacman -S $INSTALL_FLAGS scrot
-	sudo pacman -S $INSTALL_FLAGS xclip
-	sudo pacman -S $INSTALL_FLAGS thunderbird
-	sudo pacman -S $INSTALL_FLAGS rofi
-	sudo pacman -S $INSTALL_FLAGS picom
-	sudo pacman -S $INSTALL_FLAGS ranger
-	sudo pacman -S $INSTALL_FLAGS zathura
-	sudo pacman -S $INSTALL_FLAGS vlc
-	sudo pacman -S $INSTALL_FLAGS findutils
-	sudo pacman -S $INSTALL_FLAGS mlocate
-	sudo pacman -S $INSTALL_FLAGS gimp
-	sudo pacman -S $INSTALL_FLAGS elinks # terminal-based internet browser
 
 	# yay
 	yay -Syu
@@ -116,8 +95,8 @@ function setup_bin_scripts() {
 	echo "---------------------------"
 	echo "Setting up scripts in /bin/"
 	echo "---------------------------"
-	chmod +x link_bin.sh
-	(.bin/link_bin.sh)
+	chmod +x $HOME/.dotfiles/.scripts/.bin/link_bin.sh
+	($HOME/.dotfiles/.scripts/.bin/link_bin.sh)
 }
 
 function setup_git() {
