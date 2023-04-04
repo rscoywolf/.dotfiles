@@ -86,8 +86,8 @@ function setup_configs() {
 	echo "----------------------------------------------------"
 	echo "Setting up config files (old ones renamed to *_bkup)"
 	echo "----------------------------------------------------"
-	chmod +x .bin/link_configs.sh
-	(.bin/link_configs.sh)
+	chmod +x $HOME/.dotfiles/.scripts/.bin/link_configs.sh
+	($HOME/.dotfiles/.scripts/.bin/link_configs.sh)
 }
 
 function setup_bin_scripts() {
