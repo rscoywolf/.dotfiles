@@ -2,6 +2,20 @@
 
 INSTALL_FLAGS="--needed --noconfirm --quiet"
 
+function check_for_dotfiles_update() {
+	cd ~/.dotfiles
+	git fetch
+
+	local LOCAL_COMMIT=$(git rev-parse HEAD)
+	local REMOTE_COMMIT=$(git rev-parse @{u})
+
+	if [ $LOCAL_COMMIT != $REMOTE_COMMIT ]; then
+		echo "Changes detected in the ~/.dotfiles repository. Updating and rerunning the script..."
+		git pull
+		exec $0
+	fi
+}
+
 function install_package_if_not_installed() {
 	package_name=$1
 	if ! pacman -Qi $package_name >/dev/null 2>&1; then
@@ -148,6 +162,7 @@ function install_dejavu_font() {
 	fc-cache -fv
 }
 
+check_for_dotfiles_update
 install_packages
 setup_network_manager
 create_non_root_user
