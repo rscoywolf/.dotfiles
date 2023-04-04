@@ -42,6 +42,7 @@ function install_packages() {
 	sudo pacman -S $INSTALL_FLAGS findutils
 	sudo pacman -S $INSTALL_FLAGS mlocate
 	sudo pacman -S $INSTALL_FLAGS gimp
+	sudo pacman -S $INSTALL_FLAGS w3m # terminal-based internet browser
 
 	# yay
 	yay -Syu
