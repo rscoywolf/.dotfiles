@@ -31,4 +31,7 @@ return {
       end
     end,
   },
+  {
+    "xiyaowong/transparent.nvim",
+  },
 }
