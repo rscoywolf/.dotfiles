@@ -10,7 +10,7 @@ return {
   {
     "tpope/vim-surround",
   },
-  -- add syntax highlighting for fish config
+  -- add syntax highlighting for fish config file
   {
     "khaveesh/vim-fish-syntax",
   },
