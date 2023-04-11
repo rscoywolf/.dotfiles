@@ -31,3 +31,4 @@ findutils
 mlocate
 gimp
 elinks
+jdk-openjdk
