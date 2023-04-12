@@ -129,6 +129,7 @@ function setup_git() {
 	git config --global user.email "rscoywolf@gmail.com"
 	git config --global user.name "rscoywolf"
 	git config --global credential.helper store
+	git config --global pull.rebase false
 }
 
 function clone_repos() {
