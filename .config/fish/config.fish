@@ -113,6 +113,7 @@ if status is-interactive
     alias fgrep='fgrep --color=auto'
     alias cls='clear'
     alias lg='lazygit'
+    alias update='sudo pacman -Syu'
     # makes it so when ranger exits, it exits to the same directory it was in
     touch $HOME/.rangerdir
     alias ranger='ranger --choosedir=$HOME/.rangerdir; set LASTDIR (cat $HOME/.rangerdir); cd "$LASTDIR"'

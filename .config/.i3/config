@@ -434,3 +434,4 @@ bindsym Mod4+Ctrl+l exec blurlock
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec nvidia_setup.sh
