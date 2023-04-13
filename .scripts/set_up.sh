@@ -94,10 +94,6 @@ function install_snap() {
 		# install snap apps
 		read -p "Install VS Code and Teams for Linux? [y/N]: " choice_snap_apps
 		if [[ "$choice_snap_apps" =~ ^[Yy]$ ]]; then
-			cd ~
-			rm -rf ~/.config/Code
-			rm -rf ~/.vscode/
-			sudo snap remove code
 			git clone https://aur.archlinux.org/visual-studio-code-bin.git
 			cd visual-studio-code-bin
 			makepkg -si
