@@ -12,7 +12,7 @@ function check_for_dotfiles_update() {
 	if [ $LOCAL_COMMIT != $REMOTE_COMMIT ]; then
 		echo "Changes detected in the ~/.dotfiles repository. Updating and rerunning the script..."
 		git pull
-		exec $0
+		exec $HOME/.dotfiles/.scripts/set_up.sh
 	fi
 }
 
