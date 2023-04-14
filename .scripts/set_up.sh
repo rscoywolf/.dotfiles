@@ -28,7 +28,7 @@ function install_packages() {
 	sudo pacman -Syu $INSTALL_FLAGS
 
 	# install the packages
-	PKGS_FILE="$(dirname "$0")/pacman-pkgs.txt"
+	PKGS_FILE="$HOME/.dotfiles/.scripts/pacman-pkgs.txt"
 	if [ ! -f "$PKGS_FILE" ]; then
 		echo "Error: pacman-pkgs.txt not found in the script directory"
 		exit 1
