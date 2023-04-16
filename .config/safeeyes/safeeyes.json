@@ -4,7 +4,7 @@
     "long_break_interval": 75,
     "long_breaks": [
         {
-            "name": "get up and moving"
+            "name": "long break"
         }
     ],
     "meta": {
@@ -29,7 +29,7 @@
             "version": "0.0.1"
         },
         {
-            "enabled": true,
+            "enabled": false,
             "id": "audiblealert",
             "settings": {
                 "post_break_alert": true,
@@ -65,11 +65,11 @@
             "version": "0.0.3"
         },
         {
-            "enabled": false,
+            "enabled": true,
             "id": "smartpause",
             "settings": {
                 "idle_time": 5.0,
-                "interpret_idle_as_break": false,
+                "interpret_idle_as_break": true,
                 "postpone_if_active": false
             },
             "version": "0.0.3"
@@ -78,8 +78,8 @@
             "enabled": true,
             "id": "screensaver",
             "settings": {
-                "command": "",
-                "min_seconds": 3
+                "command": "blurlock",
+                "min_seconds": 3.0
             },
             "version": "0.0.2"
         },
@@ -101,17 +101,11 @@
     "pre_break_warning_time": 10,
     "random_order": true,
     "rpc_port": 7200,
-    "short_break_duration": 15,
+    "short_break_duration": 20,
     "short_break_interval": 15,
     "short_breaks": [
         {
-            "name": "tightly close your eyes"
-        },
-        {
-            "name": "blink your eyes"
-        },
-        {
-            "name": "look at something far away"
+            "name": "short break"
         }
     ],
     "shortcut_disable_time": 2,
