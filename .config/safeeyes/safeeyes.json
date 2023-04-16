@@ -69,7 +69,7 @@
             "id": "smartpause",
             "settings": {
                 "idle_time": 5.0,
-                "interpret_idle_as_break": true,
+                "interpret_idle_as_break": false,
                 "postpone_if_active": false
             },
             "version": "0.0.3"
