@@ -23,7 +23,7 @@ function install_package_if_not_installed() {
 	fi
 }
 
-function install_packages() {
+function install_packages_pacman() {
 	# update and sync
 	sudo pacman -Syu $INSTALL_FLAGS
 
@@ -45,6 +45,7 @@ function install_packages() {
 	# yay
 	yay -Syu
 	yay -S $INSTALL_FLAGS neo-matrix
+	yay -S $INSTALL_FLAGS safeeyes
 }
 
 function install_latex_packages() {
@@ -171,7 +172,7 @@ function install_dejavu_font() {
 }
 
 check_for_dotfiles_update
-install_packages
+install_packages_pacman
 setup_network_manager
 create_non_root_user
 setup_display_manager

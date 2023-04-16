@@ -34,3 +34,4 @@ elinks
 jdk-openjdk
 python
 python-pip
+xprintidle
