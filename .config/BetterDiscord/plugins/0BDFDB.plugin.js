@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 3.2.6
+ * @version 3.2.7
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -3115,14 +3115,23 @@ module.exports = (_ => {
 				BDFDB.ChannelUtils.rerenderAll = function (instant) {
 					BDFDB.TimeUtils.clear(BDFDB.ChannelUtils.rerenderAll.timeout);
 					BDFDB.ChannelUtils.rerenderAll.timeout = BDFDB.TimeUtils.timeout(_ => {
-						let ChannelsIns = BDFDB.ReactUtils.findOwner(document.querySelector(BDFDB.dotCN.guildchannels), {name: "Channels", unlimited: true});
-						let ChannelsPrototype = BDFDB.ObjectUtils.get(ChannelsIns, `${BDFDB.ReactUtils.instanceKey}.type.prototype`);
-						if (ChannelsIns && ChannelsPrototype) {
-							BDFDB.PatchUtils.patch({name: "BDFDB ChannelUtils"}, ChannelsPrototype, "render", {after: e => {
-								e.returnValue.props.children = typeof e.returnValue.props.children == "function" ? (_ => {return null;}) : [];
-								BDFDB.ReactUtils.forceUpdate(ChannelsIns);
-							}}, {once: true});
-							BDFDB.ReactUtils.forceUpdate(ChannelsIns);
+						let ChannelsIns = BDFDB.ReactUtils.findOwner(document.querySelector(BDFDB.dotCN.guildchannels), {name: "ChannelsList", unlimited: true});
+						if (!ChannelsIns) return;
+						else {
+							if (ChannelsIns && ChannelsIns.props && ChannelsIns.props.guildChannels.categories && Object.keys(ChannelsIns.props.guildChannels.categories).length) {
+								let category = ChannelsIns.props.guildChannels.categories[Object.keys(ChannelsIns.props.guildChannels.categories)[0]];
+								category.isCollapsed ? BDFDB.LibraryModules.CategoryCollapseUtils.collapse(category.id) : BDFDB.LibraryModules.CategoryCollapseUtils.expand(category.id);
+							}
+							else {
+								let ChannelsPrototype = BDFDB.ObjectUtils.get(ChannelsIns, `${BDFDB.ReactUtils.instanceKey}.type.prototype`);
+								if (ChannelsIns && ChannelsPrototype) {
+									BDFDB.PatchUtils.patch({name: "BDFDB ChannelUtils"}, ChannelsPrototype, "render", {after: e => {
+										e.returnValue.props.children = typeof e.returnValue.props.children == "function" ? (_ => {return null;}) : [];
+										BDFDB.ReactUtils.forceUpdate(ChannelsIns);
+									}}, {once: true});
+									BDFDB.ReactUtils.forceUpdate(ChannelsIns);
+								}
+							}
 						}
 					}, instant ? 0 : 1000);
 				};
@@ -6525,7 +6534,7 @@ module.exports = (_ => {
 									currentPage: this.state.offset + 1,
 									pageSize: this.props.amount,
 									maxVisiblePages: this.props.maxVisiblePages,
-									onPageChange: page => this.handleJump(isNaN(parseInt(page)) ? -1 : page - 1)
+									onPageChange: page => {this.handleJump(isNaN(parseInt(page)) ? -1 : page - 1);}
 								}),
 								this.props.jump && BDFDB.ReactUtils.createElement(Internal.LibraryComponents.TextInput, {
 									type: "number",

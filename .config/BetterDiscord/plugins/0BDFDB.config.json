@@ -1,7 +1,7 @@
 {
 	"all": {
 		"changeLogs": {
-			"BDFDB": "3.2.6",
+			"BDFDB": "3.2.7",
 			"SplitLargeMessages": "1.8.0",
 			"Translator": "2.5.5"
 		},
