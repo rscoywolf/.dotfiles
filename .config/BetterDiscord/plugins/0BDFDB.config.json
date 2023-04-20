@@ -1,7 +1,7 @@
 {
 	"all": {
 		"changeLogs": {
-			"BDFDB": "3.2.7",
+			"BDFDB": "3.2.8",
 			"SplitLargeMessages": "1.8.0",
 			"Translator": "2.5.5"
 		},
@@ -15,7 +15,7 @@
 			"useChromium": false
 		},
 		"hashes": {
-			"0BDFDB.data.json": "caf487757d2070b0a540848b28a918fe90b7f7d4",
+			"0BDFDB.data.json": "eb5c5e2a743d24c77c0fda26d98b2a44007e9725",
 			"0BDFDB.raw.css": "669b57713c736057d0465f4f6258d01a964161e8"
 		}
 	}
