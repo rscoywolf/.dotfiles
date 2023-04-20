@@ -1,7 +1,7 @@
 {
     "allow_postpone": false,
     "long_break_duration": 60,
-    "long_break_interval": 75,
+    "long_break_interval": 50,
     "long_breaks": [
         {
             "name": "long break"
@@ -102,7 +102,7 @@
     "random_order": true,
     "rpc_port": 7200,
     "short_break_duration": 20,
-    "short_break_interval": 15,
+    "short_break_interval": 10,
     "short_breaks": [
         {
             "name": "short break"
