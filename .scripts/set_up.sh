@@ -34,6 +34,8 @@ function install_packages_pacman() {
 		exit 1
 	fi
 
+	sudo pacman -R palemoon-bin
+
 	while IFS= read -r package; do
 		if [[ ! -z "$package" && ! "$package" =~ ^\s*# ]]; then
 			install_package_if_not_installed $package
